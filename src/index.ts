@@ -146,7 +146,7 @@ class StatusWidget extends ReactWidget {
 /**
  * SpellChecker
  */
-class SpellChecker {
+class CopyCode {
   dictionary: any;
   suggestions_menu: Menu;
   status_widget: StatusWidget;
@@ -256,9 +256,13 @@ class SpellChecker {
   }
 
   setup_cell_editor(cell: Cell): void {
-    if (cell !== null && cell.model.type === 'markdown') {
-      const editor = this.extract_editor(cell);
-      this.setup_overlay(editor);
+    if ((cell !== null) && (cell.model.type == "code")) {
+      let editor = this.extract_editor(cell);
+      for (let i = 0; i <= editor.lineCount(); i++) {
+          let line = editor.getLine(i);
+          console.log(line);
+        }
+      //this.setup_overlay(editor);
     }
   }
 
@@ -598,17 +602,15 @@ function activate(
   palette: ICommandPalette,
   status_bar: IStatusBar
 ): void {
-  console.log('Attempting to load spellchecker');
-  const sp = new SpellChecker(
-    app,
-    tracker,
-    editor_tracker,
-    setting_registry,
-    code_mirror,
-    palette,
-    status_bar
-  );
-  console.log('Spellchecker Loaded ', sp);
+  console.log('Attempting to load Copy Code Plugin');
+  const command: string = 'copy:code'
+  app.commands.addCommand(command, {
+      label: 'CCT',
+  execute: () => {
+      const sp = new CopyCode(app, tracker, editor_tracker, setting_registry, code_mirror, palette, status_bar);
+      console.log("CopyCode: ",sp)
+  }});
+  palette.addItem({command, category: 'Tutorial'});
 }
 
 /**
