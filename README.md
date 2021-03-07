@@ -1,38 +1,14 @@
-# jupyterlab-spellchecker
+# jupyterlab-copy code
 ![Github Actions Status](https://github.com/jupyterlab-contrib/spellchecker/workflows/Build/badge.svg)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab-contrib/spellchecker/master?urlpath=lab)
 
 A JupyterLab extension highlighting misspelled words in markdown cells within notebooks and in the text files.
 
-![](demo.gif)
 
 The JupyterLab extension is based on [the spellchecker Jupyter Notebook extension](https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tree/master/src/jupyter_contrib_nbextensions/nbextensions/spellchecker) and relies on [Typo.js](https://github.com/cfinke/Typo.js) for the actual spell checking. Spellchecker suggestions are available from the context menu.
 
-The extension provides (Hunspell) [SCOWL](http://wordlist.aspell.net/) dictionaries for:
-- American, British, Canadian, and Australian English
-- French,
-- German (Germany, Austria, Switzerland)
-- Portuguese,
-- Spanish.
-
 ## JupyterLab Version
 The extension has been tested up to JupyterLab version 3.0.
-
-## Installation
-
-For JupyterLab 3.x:
-
-```bash
-pip install jupyterlab-spellchecker
-```
-
-For JupyterLab 2.x:
-
-```bash
-jupyter labextension install @ijmbarr/jupyterlab_spellchecker
-```
-
-## Contributing
 
 ### Development install
 
@@ -62,16 +38,9 @@ jlpm run watch
 jupyter lab
 ```
 
-### Before commit
-
-Make sure that eslint passes:
-
-```bash
-jlpm run eslint:check
-```
-
-If there are any issues it might be possible to autofix them with:
-
-```bash
-jlpm run eslint
-```
+### To Run Plugin
+1. Run Jupyter Lab from your terminal
+2. As it loads in your browser, open web console
+3. On the console it should say "Attempting to load Copy Code Plugin"
+4. Click on the cell you would like to copy to terminal
+5. Click on command 'CCT' from the command palette.
